@@ -54,20 +54,20 @@ public class SortedRegister {
         // A COMPLETAR AMB LA CAPTURA D'EXCEPCIONS
         int count = 0;
            
-            try{
-                while (sc.hasNext()) {
-                    count++;
-                    this.handleLine(sc.nextLine());
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("ERROR. Linia " 
-                + count + ": " + e.getMessage());
-                count = -1;
-            } catch (IllegalArgumentException e) {
-                System.out.println("ERROR. Linia " 
-                + count + ": " + e.getMessage());
-                count = -1;
+        try{
+            while (sc.hasNext()) {
+                count++;
+                this.handleLine(sc.nextLine());
             }
+        } catch (NumberFormatException e) {
+            System.out.println("ERROR. Linia " 
+            + count + ": " + e.getMessage());
+            count = -1;
+        } catch (IllegalArgumentException e) {
+            System.out.println("ERROR. Linia " 
+            + count + ": " + e.getMessage());
+            count = -1;
+        }
         
         return count;
     } 
@@ -142,21 +142,21 @@ public class SortedRegister {
         int count = 0;
         
         // COMPLETAR
-        try{
-                while (sc.hasNext()) {
-                    count++;
-                    this.handleLine(sc.nextLine());
-                }
+        while (sc.hasNext()) {
+            count++;
+            try{                                    
+                this.handleLine(sc.nextLine());                    
             } catch (NumberFormatException e) {
                
-                err.print("ERROR. Linia " 
+                err.println("ERROR. Linia " 
                 + count + ": " + e.getMessage());
-                count = -1;
+                
             } catch (IllegalArgumentException e) {                
-                err.print("ERROR. Linia " 
+                err.println("ERROR. Linia " 
                 + count + ": " + e.getMessage());
-                count = -1;
-            }
+                
+            } 
+        }
         
         return count;
     }

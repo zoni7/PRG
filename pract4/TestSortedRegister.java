@@ -17,7 +17,7 @@ public class TestSortedRegister {
     /** No hi ha objectes d'aquesta classe. */  
     private TestSortedRegister() { }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Scanner keyB = new Scanner(System.in);
         int currentY = 2020;
         String msg = "Any de les dades (fins 10 anys endarrere): ";
@@ -49,6 +49,7 @@ public class TestSortedRegister {
         } catch (FileNotFoundException e) {
             System.out.println("Error en obrir el fitxer: " + f);
         } finally {
+            if (in != null) { in.close(); }
             if (out != null) { out.close(); }
             if (err != null) { err.close(); }
         }
@@ -90,6 +91,12 @@ public class TestSortedRegister {
     public static void test2(int year, Scanner in, PrintWriter out,
         PrintWriter err) {
         // COMPLETAR
+        SortedRegister c = new SortedRegister(year);
+        int n = c.add(in, err);
+        
+        c.save(out);                      
+        System.out.println("S'han processat " + n + " linies.");
+        
         System.out.println("----------------------------------------------------");
         System.out.println("test2 finalitzat.");
         System.out.println("----------------------------------------------------");

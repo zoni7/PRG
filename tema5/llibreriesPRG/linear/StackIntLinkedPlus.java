@@ -1,5 +1,9 @@
 package linear;
 
+import java.io.*;
+import java.lang.*;
+import java.util.Scanner;
+import java.util.*;
 /**
  * Classe que afegeix funcionalitat a StackIntLinked.
  *
@@ -120,4 +124,47 @@ public class StackIntLinkedPlus extends StackIntLinked {
         }
         
     }
+    
+    public static int cont(StackIntLinked p, int x) {
+        StackIntLinked aux = new StackIntLinked();
+        int cont = 0;
+        
+        while(p.size() != 0) {
+            if (p.peek() == x) { cont ++; }
+            aux.push(p.peek());
+            p.pop();
+        }
+        while(aux.size() != 0) {
+            p.push(aux.pop());
+        }
+        return cont;        
+    }
+    
+    public static void cim(StackIntLinked p) {
+        
+        try{
+            
+            int cim = p.peek();
+            System.out.println( cim);
+        } catch (NoSuchElementException e) {
+            System.err.println("FATAAAAAL");
+        }
+        
+        
+    }
+    
+    public static void esborraBase(StackIntLinked p) {
+        StackIntLinked aux = new StackIntLinked();
+        if (p.size() != 0) {                            
+            while(p.size() > 1 ) {
+                aux.push(p.pop());
+            }
+            p.pop();
+            while(aux.size() > 0) {
+                p.push(aux.pop());
+            }
+        }
+    }   
+    
+    
 }

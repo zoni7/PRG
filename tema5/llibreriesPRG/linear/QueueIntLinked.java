@@ -164,5 +164,48 @@ public class QueueIntLinked {
             this.size++;
         }
     }
-   
+    
+    public void colar(int x) {
+        NodeInt aux = first;
+        NodeInt ant = null;
+        while(aux != null && aux.data != x) {
+            ant = aux;
+            aux = aux.next;
+        }
+         
+        if (aux != null && aux != first) {
+            int dada = aux.data;
+            ant.next = aux.next;
+            aux.next = first;
+            first = aux;
+            if (aux == last) last = ant;
+        }
+    }
+    
+    public void addOrdenadament(int x) {
+        NodeInt nou = new NodeInt(x);
+        NodeInt aux = first;
+        NodeInt prevAux = null;
+        
+        
+        while(aux != null && x < aux.data) {
+            prevAux = aux;
+            aux = aux.next;            
+        }
+        
+        if(aux != first){
+            prevAux.next = nou;
+            nou.next = aux;
+        } else {
+            nou.next = first;
+            first = nou;
+        }
+        
+        if (aux == null) {
+            
+            last = nou;
+        }
+        size++;
+    }
+    
 }

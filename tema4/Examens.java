@@ -136,7 +136,7 @@ public class Examens
         Scanner in = null;
         
         try{
-            in = new Scanner(data)//.useLocale(Locale.US);
+            in = new Scanner(data);//.useLocale(Locale.US);
             out = new PrintWriter(correctData);
             
             while(in.hasNextLine()) {
@@ -157,4 +157,27 @@ public class Examens
         
     }
     
+    public static int sum(String s) throws FileNotFoundException {
+        int suma = 0;
+        File f = new File(s);
+        Scanner in = new Scanner(f);
+        
+        while (in.hasNextLine()) {
+            try {
+                suma += in.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println(e + "::" + in.nextLine());
+            }
+        }
+        in.close();
+        return suma;
+    }
+    
+    public static void escriureAmbMajuscules(String nomF1) throws FileNotFoundException {
+        Scanner in = new Scanner(new File(nomF1));
+        while(in.hasNextLine()) {
+            System.out.println(in.nextLine().toUpperCase()); 
+        }
+        in.close();
+    }
 }

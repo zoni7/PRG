@@ -344,4 +344,26 @@ public class ListPIIntLinked {
         }
         return res;
     }
+    
+    public void removeGreaterThan2(int e) {
+        if (first != null && first.data > e) {
+            first = null;
+            size = 0;
+        } else {
+            int cont = 0;
+            while (pI != null && pI.data > e) {
+                prevPI = pI;
+                pI = pI.next;
+                cont++;
+            }
+        
+            if (pI != null) {
+                prevPI.next = null;
+                size = cont;
+            }
+        }
+        prevPI = null;
+        pI = first;
+            
+    } 
 }

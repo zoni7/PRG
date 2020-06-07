@@ -1,3 +1,4 @@
+
 package linear;
 
 /**
@@ -147,5 +148,48 @@ public class ListPIIntLinkedPlus extends ListPIIntLinked {
         if (n == 1) { res.insert(l.get() - 2); }
         
         return res;
+    }
+    
+    public static void unio(ListPIIntLinked a, ListPIIntLinked b) {
+        b.begin();
+        // while (!b.isEnd()) {
+          
+            // if (!conte(b.get())) {
+                // a.insert(b.get());
+            // }
+            // b.next();
+        // }
+    }
+    
+    public static ListPIIntLinked unioOrdenat(ListPIIntLinked a, ListPIIntLinked b) {
+        ListPIIntLinked unio = new ListPIIntLinked();
+        a.begin();
+        b.begin();
+        while(!a.isEnd() && !b.isEnd()) {
+            if (a.get() < b.get()) { 
+                unio.insert(a.get());
+                a.next();                
+            }
+            else if (a.get() == b.get()) { 
+                unio.insert(a.get());
+                a.next();
+                b.next();                 
+            } else {
+                unio.insert(b.get());
+                b.next();                 
+            }
+        }
+        
+       // Completem la resta al array
+       while(!a.isEnd()) {
+           unio.insert(a.get());
+           a.next();
+       }
+       while (!b.isEnd()) {
+           unio.insert(b.get());
+           b.next();
+       }
+       
+       return unio;
     }
 }

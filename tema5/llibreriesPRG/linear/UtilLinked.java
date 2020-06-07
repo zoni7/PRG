@@ -300,4 +300,16 @@ public class UtilLinked {
         /* COMPLETAR */
         return nova;
     }
+    
+    public static int ultimaAparicioDe2(NodeInt seq, int x) {
+        NodeInt aux = seq;
+        int res = -1;
+        while(aux != null) {
+            if (aux.data == x) { res = x; }
+            aux = aux.next;
+        }
+        return res;
+    }
+    
+   
 }
