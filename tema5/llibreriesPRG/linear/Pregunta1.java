@@ -9,21 +9,24 @@ package linear;
  */
 public class Pregunta1
 {
-      public static ListPIIntLinked traductorBinari(ListPIIntLinked l) {
-        ListPIIntLinked res = new ListPIIntLinked();
-        l.begin();
-        int n = l.size();
-        int e1 , e2;
-        while (n >= 2) {
-            e1 = l.get();
-            l.next();
-            e2 = l.get();
-            l.next();
-            res.insert(e1 * 2 + e2);
-            n = n - 2;
-        }
-        if (n == 1) { res.insert(l.get() - 2); }
-
-        return res;
-    }
+      public static StackIntLinked returnGreaterThan(StackIntLinked p, int x) {
+          StackIntLinked res = new StackIntLinked();
+          StackIntLinked auxRes = new StackIntLinked();
+          StackIntLinked aux = new StackIntLinked();
+          
+          while(p.size() != 0) {
+              if (p.peek() > x) {
+                  auxRes.push(p.pop());
+              } else {
+                  aux.push(p.pop());
+              }
+          }
+          while (aux.size() != 0) {
+              p.push(aux.pop());
+          }
+          while (auxRes.size() != 0) {
+              res.push(auxRes.pop());
+          }
+          return res;
+      }
 }

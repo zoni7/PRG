@@ -208,4 +208,26 @@ public class QueueIntLinked {
         size++;
     }
     
+    /** Elimina de la cola todos los elementos menores que x.
+     *  PrecondiciÃ³n: los datos de la cola estÃ¡n en orden creciente.
+     */
+    public void removeLessThanInOrd(int x) {
+        // COMPLETAR
+        int cont = 0; 
+        NodeInt aux = first;
+        NodeInt ant = null;
+        while(aux != null && aux.data < x) {
+            ant = aux;
+            aux = aux.next;
+            cont++;
+        }
+        if (aux != null) { // Caso si es el primero o si x está por el medio de la cola            
+            first = aux;
+            size = size - cont;
+        } else { // Si x es mayor que todos los elementos de la cola
+            first = null;
+            last = null;
+            size = 0;
+        }
+    }
 }
